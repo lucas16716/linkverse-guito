@@ -28,31 +28,28 @@ $font-64: 4rem;       // 64px     (Manual UI)
 // ---------------------------------------------------
 // Font Weight Scale
 // ---------------------------------------------------
-$weight-100: 100;  // Thin 
-$weight-200: 200;  // Extra Light
 $weight-300: 300;  // Light
 $weight-400: 400;  // Regular
 $weight-500: 500;  // Medium
 $weight-600: 600;  // Semi bold
 $weight-700: 700;  // Bold
-$weight-800: 800;  // Extra Bold
-$weight-900: 900;  // Black
 
 // ---------------------------------------------------
 // Line Height Scale
 // ---------------------------------------------------
-$lh-none:    1;
-$lh-tight:   1.25;
-$lh-normal:  1.5;
-$lh-relaxed: 1.7;
+$lh-display: .88;
+$lh-heading: 1.1;
+$lh-body: 1.7;
+$lh-small: 1.5;
 
 // ---------------------------------------------------
 // Letter Spacing Scale
 // ---------------------------------------------------
-$tracking-tight: -0.02em;
-$tracking-normal: 0;
-$tracking-wide: 0.04em;
+$ls-display: -.04em;
+$ls-heading: -.02em;
+$ls-body: 0;
+$ls-label: .22em;
 
 // ---------------------------------------------------
 // Semantic Tokens in base/_typography.scss
-// ---------------------------------------------------
+// ---------------------------------------------------  

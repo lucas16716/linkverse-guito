@@ -10,7 +10,7 @@
 // ---------------------------------------------------
 // Layout — Container
 // ---------------------------------------------------
-@mixin container( $max-width: map.get(token.$container-sizes, xl) ) {
+@mixin container( $max-width: map.get(token.$container-sizes, xxl) ) {
   width: 100%;
   max-width: $max-width;
   padding-inline: token.$gutter;

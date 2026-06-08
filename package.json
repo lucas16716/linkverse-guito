@@ -1,17 +1,25 @@
 {
-  "name": "axis",
-  "version": "2.0.0",
-  "description": "Structured Sass foundation for scalable frontend projects — ready to clone and build.",
-  "author": "Lucas Couto",
-  "license": "MIT",
+  "name": "linkverse-guito",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Lucas Code",
+  "type": "module",
+  "license": "Personalizada",
+  "keywords": [
+    "linkverse",
+    "link in bio",
+    "portfolio",
+    "vite",
+    "sass"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lucas16716/axis.git"
+    "url": "git+https://github.com/lucas16716/linkverse-guito.git"
   },
   "bugs": {
-    "url": "https://github.com/lucas16716/axis/issues"
+    "url": "https://github.com/lucas16716/linkverse-guito/issues"
   },
-  "homepage": "https://github.com/lucas16716/axis#readme",
+  "homepage": "https://github.com/lucas16716/linkverse-guito#readme",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",

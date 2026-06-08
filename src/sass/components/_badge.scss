@@ -9,7 +9,7 @@
 // Semantic Badge Tokens
 // ---------------------------------------------------
 $font-size-badge:   token.$font-13;
-$line-height-badge: token.$lh-none;
+// $line-height-badge: token.$lh-none;
 $border-rd-badge:   token.$radius-full;
 $padding-badge:     token.$space-ui-6 token.$space-ui-12;
 $gap-badge:         token.$space-ui-2;
@@ -30,9 +30,10 @@ $gap-badge:         token.$space-ui-2;
   border-radius: $border-rd-badge;
 
   font-size: $font-size-badge;
-  line-height: $line-height-badge;
+  // line-height: $line-height-badge;
   
   white-space: nowrap;
+  -webkit-user-select: none;
   user-select: none;
   vertical-align: middle;
 }

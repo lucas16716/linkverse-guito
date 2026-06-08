@@ -8,23 +8,31 @@
 // Semantic Tokens
 // ---------------------------------------------------
 // Base
-$font-family-base: Oxygen, Ubuntu, Cantarell, system-ui, -apple-system, sans-serif;
-$font-size-base:   token.$font-16;           // Base - Major Third 0
-$font-weight-base: token.$weight-400;        // Regular
-$line-height-base: token.$lh-normal;         // 1.5
-$letter-spc-base:  token.$tracking-normal;   // 0em
+$font-family-base: "Inter", Ubuntu, system-ui, -apple-system, sans-serif;
+$font-size-base:   token.$font-16;           // A confirmar
+$font-weight-base: token.$weight-400;        // A confirmar
+// $line-height-base: token.$lh-normal;         // A confirmar
+// $letter-spc-base:  token.$tracking-normal;   // A confirmar
+
+// Display (H1)
+$font-family-display: "Anton", Ubuntu, system-ui, -apple-system, sans-serif;
+$font-size-display: token.$font-64;         // A confirmar
+$font-weight-display: token.$weight-400;    // Regular
+$line-height-display: token.$lh-display;    // .88
+$letter-spacing-display: token.$ls-display; // -.04em
+
 
 // Headings
-$font-family-heading: Oxygen, Ubuntu, Cantarell, system-ui, -apple-system, sans-serif;
-$font-weight-heading: token.$weight-700;     // Bold
-$line-height-heading: token.$lh-none;        // 1
-$letter-spc-heading:  token.$tracking-tight; // -0.02em
-$font-size-h1: token.$font-61; // 3.815rem  (~61px) - Major Third 6
-$font-size-h2: token.$font-49; // 3.051rem  (~48.8px) - Major Third 5
-$font-size-h3: token.$font-39; // 2.441rem  (~39px) - Major Third 4
-$font-size-h4: token.$font-31; // 1.953rem  (~31.2px) - Major Third 3
-$font-size-h5: token.$font-25; // 1.5625rem (25px) - Major Third 2
-$font-size-h6: token.$font-20; // 1.25rem   (20px) - Major Third 1
+$font-family-heading: "Inter", Ubuntu, system-ui, -apple-system, sans-serif;
+$font-weight-heading: token.$weight-400;     // A confirmar
+// $line-height-heading: token.$lh-none;        // A confirmar
+// $letter-spc-heading:  token.$tracking-tight; //A confirmar
+$font-size-h1: token.$font-61; // A confirmar
+$font-size-h2: token.$font-49; // A confirmar
+$font-size-h3: token.$font-39; // A confirmar
+$font-size-h4: token.$font-31; // A confirmar
+$font-size-h5: token.$font-25; // A confirmar
+$font-size-h6: token.$font-20; // A confirmar
 
 // ---------------------------------------------------
 // Default Typography
@@ -38,21 +46,32 @@ body {
   font-family: $font-family-base;
   font-size:   $font-size-base;
   font-weight: $font-weight-base;
-  line-height: $line-height-base;
-  letter-spacing: $letter-spc-base;
+  // line-height: $line-height-base;
+  // letter-spacing: $letter-spc-base;
+}
+
+// ---------------------------------------------------
+// Display (H1)
+// ---------------------------------------------------
+h1 {
+  font-family:    $font-family-display;
+  font-size:      $font-size-display;
+  font-weight:    $font-weight-display;
+  line-height:    $line-height-display;
+  letter-spacing: $letter-spacing-display;
+  text-transform: uppercase;
 }
 
 // ---------------------------------------------------
 // Headings
 // ---------------------------------------------------
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
   font-family:    $font-family-heading;
   font-weight:    $font-weight-heading;
-  line-height:    $line-height-heading;
-  letter-spacing: $letter-spc-heading;
+  // line-height:    $line-height-heading;
+  // letter-spacing: $letter-spc-heading;
 }
 
-h1 { font-size: $font-size-h1; }
 h2 { font-size: $font-size-h2; }
 h3 { font-size: $font-size-h3; }
 h4 { font-size: $font-size-h4; }
