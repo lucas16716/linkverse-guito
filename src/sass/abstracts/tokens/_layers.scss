@@ -9,10 +9,13 @@
 $z-layers: (
   back:     -1,   // Background elements
   base:     0,    // Default stacking context
+  overlay:  1,    // UI elements that overlay content
+  content:  2,    // Primary content layers
   sticky:   10,   // Sticky navigation & sub-headers
   header:   100,  // Fixed headers
   dropdown: 200,  // Dropdowns & popovers
-  overlay:  900,  // Backdrops
+  grain:    998,  // Body noise texture
+  grunge:   999,  // Body grunge texture
   modal:    1000, // Modal dialogs
   tooltip:  1100  // Topmost UI layer
 );

@@ -10,17 +10,23 @@
 // Base
 $font-family-base: "Inter", Ubuntu, system-ui, -apple-system, sans-serif;
 $font-size-base:   token.$font-16;           // A confirmar
-$font-weight-base: token.$weight-400;        // A confirmar
-// $line-height-base: token.$lh-normal;         // A confirmar
-// $letter-spc-base:  token.$tracking-normal;   // A confirmar
+$font-weight-base: token.$weight-300;        // A confirmar
+$line-height-base: token.$lh-body;         // 1.7
+$letter-spc-base:  token.$ls-body;   // 0
+$color-base: token.$color-text-primary; // #D9D9D9;
+
+// Variant - Label
+$font-size-label: token.$font-14; // A confirmar
+$font-weight-label: token.$weight-400; // A confirmar
+
+
 
 // Display (H1)
 $font-family-display: "Anton", Ubuntu, system-ui, -apple-system, sans-serif;
-$font-size-display: token.$font-64;         // A confirmar
+$font-size-display: 9.2rem;         // A confirmar
 $font-weight-display: token.$weight-400;    // Regular
-$line-height-display: token.$lh-display;    // .88
+$line-height-display: token.$lh-display;    // .85
 $letter-spacing-display: token.$ls-display; // -.04em
-
 
 // Headings
 $font-family-heading: "Inter", Ubuntu, system-ui, -apple-system, sans-serif;
@@ -44,10 +50,21 @@ html {
 
 body {
   font-family: $font-family-base;
-  font-size:   $font-size-base;
+  // font-size:   $font-size-base; // A Confirmar
   font-weight: $font-weight-base;
-  // line-height: $line-height-base;
-  // letter-spacing: $letter-spc-base;
+  line-height: $line-height-base;
+  letter-spacing: $letter-spc-base;
+  color: $color-base;
+  
+}
+
+// ---------------------------------------------------
+// Variants
+// ---------------------------------------------------
+.label {
+  font-size: token.$font-14; // A confirmar
+  font-weight: $font-weight-label;
+  text-transform: uppercase;
 }
 
 // ---------------------------------------------------
@@ -77,3 +94,4 @@ h3 { font-size: $font-size-h3; }
 h4 { font-size: $font-size-h4; }
 h5 { font-size: $font-size-h5; }
 h6 { font-size: $font-size-h6; }
+

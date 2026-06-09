@@ -10,10 +10,10 @@
 // ---------------------------------------------------
 // Layout — Container
 // ---------------------------------------------------
-@mixin container( $max-width: map.get(token.$container-sizes, xxl) ) {
+@mixin container( $max-width: map.get(token.$container-sizes, xl) ) {
   width: 100%;
   max-width: $max-width;
-  padding-inline: token.$gutter;
+  // padding-inline: token.$gutter;
   margin-inline: auto;
 }
 
@@ -97,7 +97,7 @@
 //     @include focus-ring(token.$red-500)    → error
 //     @include focus-ring(currentColor, 4px) → larger offset
 // ---------------------------------------------------
-@mixin focus-ring($color: token.$blue-500, $offset: 4px, $radius: 4px) {
+@mixin focus-ring($color: token.$color-accent, $offset: 3px, $radius: 6px) {
   outline: 2px solid $color;
   outline-offset: $offset;
   border-radius: $radius;
