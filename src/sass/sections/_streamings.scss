@@ -1,0 +1,37 @@
+@use "../abstracts/tokens" as token;
+@use "../abstracts/mixins" as mix;
+@use "../abstracts/functions" as fn;
+
+.streamings {
+  @include mix.flex(center, space-between);
+  position: relative;
+  width: 100%;
+
+  background-color: token.$color-bg-primary;
+  border-bottom: 1px solid token.$color-border;
+
+  .container-img-overlay {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    z-index: fn.z(overlay);
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(to bottom, #0d0d0d 0%, transparent 55%),
+      linear-gradient(to top, #0d0d0d 0%, transparent 35%),
+      linear-gradient(to right, #0d0d0d 0%, transparent 45%),
+      linear-gradient(to left, #0d0d0d 0%, transparent 35%);
+  }
+}

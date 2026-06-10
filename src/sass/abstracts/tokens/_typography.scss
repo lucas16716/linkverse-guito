@@ -25,6 +25,9 @@ $font-49: 3.051rem;   // ~48.83px (Major Third 5)
 $font-61: 3.815rem;   // ~61.04px (Major Third 6)
 $font-64: 4rem;       // 64px     (Manual UI)
 
+$font-display: clamp(5.2rem, 8.636vw + 3.473rem, 9rem);
+$font-label:   clamp(0.625rem, 0.568vw + 0.511rem, 0.875rem);
+
 // ---------------------------------------------------
 // Font Weight Scale
 // ---------------------------------------------------

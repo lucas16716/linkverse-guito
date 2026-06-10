@@ -8,11 +8,15 @@ $texture-grunge-text: "/assets/media/img/texture-grunge-dust2.jpg";
   position: relative;
   width: 100%;
   height: 400px;
-  overflow: hidden;
     
   background-color: token.$color-bg-primary; 
   border-bottom: 1px solid token.$color-border;
 
+  // Responsividade do Hero
+  @include mix.respond(md) { 
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
 
   img {
     position: absolute;
@@ -27,7 +31,9 @@ $texture-grunge-text: "/assets/media/img/texture-grunge-dust2.jpg";
 
     // Responsividade da imagem
     @include mix.respond(lg) { object-position: center; }
-    // @include mix.respond(sm) { right: 5rem }
+    @include mix.respond(md) { object-position: 85% center; }
+    @include mix.respond(sm) { object-position: 78% center; }
+    @include mix.respond(xxs) { object-position: 77% center; }
   }
 
   &__overlay {
@@ -42,13 +48,12 @@ $texture-grunge-text: "/assets/media/img/texture-grunge-dust2.jpg";
       linear-gradient(to bottom, #0d0d0d 0%, transparent 10%);
 
     // Responsividade do overlay
-    // @include mix.respond(sm) { 
-    //     background:
-    //       linear-gradient(to right, #0d0d0d 0%, #0d0d0d 10%, transparent 45%),
-    //       linear-gradient(to left, #0d0d0d 0%, transparent 80%),
-    //       linear-gradient(to top, #0d0d0d 0%, transparent 20%),
-    //       linear-gradient(to bottom, #0d0d0d 0%, transparent 10%);
-    //  }
+    @include mix.respond(md) { 
+      background:
+       linear-gradient(to top right, #0d0d0d 20%, #0d0d0d 25%, transparent 60%),
+       linear-gradient(to top, #0d0d0d 0%, transparent 20%),
+       linear-gradient(to bottom, #0d0d0d 0%, transparent 0%);
+    }
   }
 
   &__content {
@@ -58,7 +63,7 @@ $texture-grunge-text: "/assets/media/img/texture-grunge-dust2.jpg";
     bottom: 1rem;
 
     width: 100%;
-    max-width: 500px;
+    max-width: 350px;
 
     // Efeito de texto desgastado
     background-image: url($texture-grunge-text);
@@ -77,20 +82,10 @@ $texture-grunge-text: "/assets/media/img/texture-grunge-dust2.jpg";
     // Responsividade do conteúdo
     @include mix.respond(xl) { padding: 0 token.$gutter; }
 
+     // Estilização dos elementos internos
     p {
       margin-left: 0.5rem;
       margin-bottom: 1rem;
-
-      &::before {
-        content: "";
-        display: inline-block;
-        position: absolute;
-        width: 2rem;
-        height: 1px;
-        border-radius: 2px;
-        background-color: token.$color-accent;
-        top: 1.7rem;
-      }
     }
 
     ul {

@@ -1,4 +1,5 @@
 @use "../abstracts/tokens" as token;
+@use "../abstracts/mixins" as mix;
 
 // ===================================================
 // AXIS — TYPOGRAPHY BASE
@@ -10,35 +11,30 @@
 // Base
 $font-family-base: "Inter", Ubuntu, system-ui, -apple-system, sans-serif;
 $font-size-base:   token.$font-16;           // A confirmar
-$font-weight-base: token.$weight-300;        // A confirmar
+$font-weight-base: token.$weight-400;        // A confirmar
 $line-height-base: token.$lh-body;         // 1.7
 $letter-spc-base:  token.$ls-body;   // 0
 $color-base: token.$color-text-primary; // #D9D9D9;
 
 // Variant - Label
-$font-size-label: token.$font-14; // A confirmar
-$font-weight-label: token.$weight-400; // A confirmar
-
-
+$font-size-label: token.$font-label; // A confirmar
+$font-weight-label: token.$weight-500; // 500 Medium
 
 // Display (H1)
 $font-family-display: "Anton", Ubuntu, system-ui, -apple-system, sans-serif;
-$font-size-display: 9.2rem;         // A confirmar
+$font-size-display:   token.$font-display;         // A confirmar
 $font-weight-display: token.$weight-400;    // Regular
 $line-height-display: token.$lh-display;    // .85
 $letter-spacing-display: token.$ls-display; // -.04em
 
 // Headings
-$font-family-heading: "Inter", Ubuntu, system-ui, -apple-system, sans-serif;
-$font-weight-heading: token.$weight-400;     // A confirmar
-// $line-height-heading: token.$lh-none;        // A confirmar
-// $letter-spc-heading:  token.$tracking-tight; //A confirmar
-$font-size-h1: token.$font-61; // A confirmar
-$font-size-h2: token.$font-49; // A confirmar
-$font-size-h3: token.$font-39; // A confirmar
-$font-size-h4: token.$font-31; // A confirmar
-$font-size-h5: token.$font-25; // A confirmar
-$font-size-h6: token.$font-20; // A confirmar
+$font-weight-heading: token.$weight-400;    // A confirmar - 400 Regular
+$line-height-heading: token.$lh-heading;    // 1.1
+$letter-spc-heading:  token.$ls-heading;    // -.02em
+$color-heading: token.$color-text-secondary; // #A2A2A2
+$color-heading-accent: token.$color-accent; // #7A1F1F
+$font-size-h2: token.$font-16;              // A confirmar
+
 
 // ---------------------------------------------------
 // Default Typography
@@ -55,17 +51,33 @@ body {
   line-height: $line-height-base;
   letter-spacing: $letter-spc-base;
   color: $color-base;
-  
+  text-transform: uppercase;
 }
 
 // ---------------------------------------------------
 // Variants
 // ---------------------------------------------------
-.label {
-  font-size: token.$font-14; // A confirmar
-  font-weight: $font-weight-label;
-  text-transform: uppercase;
+p {
+  &.label {
+    font-size: $font-size-label;
+    font-weight: $font-weight-label;
+  }
+
+  &.decoration {
+    &::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      width: 2rem;
+      height: 0.09rem;
+      border-radius: 2px;
+      background-color: token.$color-accent;
+      top: clamp(1.2rem, 0.682vw + 1.064rem, 1.5rem);
+    }
+  }
 }
+
+a { &.text-link { font-family: $font-family-display; font-size: token.$font-32; } }
 
 // ---------------------------------------------------
 // Display (H1)
@@ -83,15 +95,27 @@ h1 {
 // Headings
 // ---------------------------------------------------
 h2, h3, h4, h5, h6 {
-  font-family:    $font-family-heading;
   font-weight:    $font-weight-heading;
-  // line-height:    $line-height-heading;
-  // letter-spacing: $letter-spc-heading;
+  line-height:    $line-height-heading;
+  letter-spacing: $letter-spc-heading;
+  color: $color-heading;
+
+  .accent { color: $color-heading-accent; }
 }
 
-h2 { font-size: $font-size-h2; }
-h3 { font-size: $font-size-h3; }
-h4 { font-size: $font-size-h4; }
-h5 { font-size: $font-size-h5; }
-h6 { font-size: $font-size-h6; }
-
+h2 {
+  position: relative;
+  font-size: $font-size-h2;
+  
+  &::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 3rem;
+    height: 0.09rem;
+    border-radius: 2px;
+    background-color: token.$color-accent;
+    top: 2.8rem;
+    @include mix.respond(dv) { top: 3.8rem; }
+  }
+}
