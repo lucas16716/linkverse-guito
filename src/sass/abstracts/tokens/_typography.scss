@@ -26,6 +26,7 @@ $font-61: 3.815rem;   // ~61.04px (Major Third 6)
 $font-64: 4rem;       // 64px     (Manual UI)
 
 $font-display: clamp(5.2rem, 8.636vw + 3.473rem, 9rem);
+$font-h2: clamp(0.875rem, 0.893vw + 0.696rem, 1.125rem);
 $font-label:   clamp(0.625rem, 0.568vw + 0.511rem, 0.875rem);
 
 // ---------------------------------------------------
@@ -41,7 +42,7 @@ $weight-700: 700;  // Bold
 // Line Height Scale
 // ---------------------------------------------------
 $lh-display: .85;
-$lh-heading: 1.1;
+$lh-heading: 1.2;
 $lh-body: 1.7;
 $lh-small: 1.5;
 

@@ -3,27 +3,30 @@
 @use "../abstracts/functions" as fn;
 
 .streamings {
-  @include mix.flex(center, space-between);
+  @include mix.flex(row, space-between, flex-start, 0);
   position: relative;
   width: 100%;
 
   background-color: token.$color-bg-primary;
   border-bottom: 1px solid token.$color-border;
 
-  .container-img-overlay {
+  &__container-img {
     position: relative;
-    width: fit-content;
-    height: fit-content;
+    max-width: 512px;
+    width: 100%;
+    height: 100%;
+
+    // Responsividade da imagem
+    @include mix.respond(sm) { display: none; }
 
     img {
-      display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
       object-fit: cover;
     }
   }
 
-  &__overlay {
+  &__container-overlay {
     position: absolute;
     z-index: fn.z(overlay);
     inset: 0;
@@ -31,7 +34,85 @@
     background:
       linear-gradient(to bottom, #0d0d0d 0%, transparent 55%),
       linear-gradient(to top, #0d0d0d 0%, transparent 35%),
-      linear-gradient(to right, #0d0d0d 0%, transparent 45%),
-      linear-gradient(to left, #0d0d0d 0%, transparent 35%);
+      linear-gradient(to right, #0d0d0d 0%, transparent 40%),
+      linear-gradient(to left, #0d0d0d 0%, transparent 45%);
+  }
+
+  &__container-content {
+    @include mix.flex(row, center, flex-start, 0);
+    width: 100%;
+    max-width: 512px;
+    padding: token.$gutter 0 token.$gutter 0.5rem;
+
+    @include mix.respond(xl) { padding: token.$gutter 0 token.$gutter token.$gutter; }
+    // @include mix.respond(lg) { @include mix.flex(column, center, flex-start, token.$gutter); }
+    @include mix.respond(xxs) { padding: token.$gutter token.$gutter calc(token.$gutter - 1rem) token.$gutter; }
+
+    nav {
+      width: 100%;
+      max-width: 380px;
+
+      ul {
+        width: 100%;
+
+        li {
+          width: 100%;
+          max-width: 320px;
+          position: relative;
+          @include mix.flex(row, space-between, center, 0);
+          white-space: nowrap;
+
+          border-bottom: 1px solid token.$color-border;
+          &:last-child { border-bottom: none; }
+
+          a {
+            padding: 1rem;
+            padding-left: 0;
+            color: inherit;
+
+            transition:
+              padding-left token.$duration-200 token.$ease-standard,
+              color token.$duration-200 token.$ease-standard;
+          
+            // &::after {          
+            //   content: "";
+            //   position: absolute;
+            //   inset: 0;
+            // }
+
+            &:hover, &:focus-visible {
+              color: token.$color-accent;
+              padding-left: 16px; 
+
+              // O SEGREDO: O seletor '~' (irmão) acha o SVG que vem 
+              // logo depois do <a> no HTML e acende ele junto!
+              & ~ svg {
+                opacity: 1; 
+                transform: translateX(0);
+                color: token.$color-accent; 
+              }
+            }
+
+            &:active { 
+              color: fn.color-dark(token.$color-accent, 25%); 
+              
+              & ~ svg {
+                color: fn.color-dark(token.$color-accent, 25%); 
+              }
+            }
+          }
+
+          svg {
+            opacity: token.$opacity-0;
+            color: inherit;
+            transition: opacity token.$duration-200 token.$ease-standard,
+                        transform token.$duration-200 token.$ease-standard,
+                        color token.$duration-200 token.$ease-standard;
+            transform: translateX(-1rem);
+            pointer-events: none;
+          }
+        }
+      }
+    }
   }
 }
