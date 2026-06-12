@@ -2,117 +2,136 @@
 @use "../abstracts/mixins" as mix;
 @use "../abstracts/functions" as fn;
 
+// ===================================================
+// AXIS — STREAMINGS (Section)
+// ===================================================
+
+// ---------------------------------------------------
+// Semantic Tokens (Surface)
+// ---------------------------------------------------
+$bg-streamings:      token.$color-bg-primary;
+$border-streamings:  1px solid token.$color-border;
+
+// ---------------------------------------------------
+// Semantic Tokens (Image Container)
+// ---------------------------------------------------
+$max-width-img-streamings:    500px;
+$overlay-start-streamings:    token.$color-bg-primary;
+$overlay-end-streamings:      rgba(13, 13, 13, 0); // token.$color-bg-primary → transparent
+
+// ---------------------------------------------------
+// Semantic Tokens (Content Container)
+// ---------------------------------------------------
+$z-overlay-streamings:  fn.z(overlay);
+$z-content-streamings:  fn.z(content);   // verify layer exists in _layers.scss
+$padding-content:        token.$gutter 0 token.$gutter token.$space-8;
+$padding-content-xl:     token.$gutter token.$gutter calc(token.$gutter - token.$space-ui-16) token.$gutter;
+$max-width-li:           480px;
+
+// ---------------------------------------------------
+// Semantic Tokens (Links)
+// ---------------------------------------------------
+$padding-link:          token.$space-ui-16 0;
+$padding-link-hover:    token.$space-ui-16;
+$color-link:            inherit;
+$color-link-hover:      token.$color-accent;
+$color-link-active:     fn.color-dark(token.$color-accent, 25%);
+$transition-link:       token.$duration-200 token.$ease-standard;
+
+// ---------------------------------------------------
+// Streamings Section
+// ---------------------------------------------------
 .streamings {
-  @include mix.flex(row, space-between, flex-start, 0);
   position: relative;
   width: 100%;
+  min-height: 400px;
 
-  background-color: token.$color-bg-primary;
-  border-bottom: 1px solid token.$color-border;
+  background-color: $bg-streamings;
+  border-bottom: $border-streamings;
 
+  // ---------------------------------------------------
+  // Image Container
+  // ---------------------------------------------------
   &__container-img {
-    position: relative;
-    max-width: 512px;
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
     width: 100%;
-    height: 100%;
+    max-width: $max-width-img-streamings;
 
-    // Responsividade da imagem
     @include mix.respond(sm) { display: none; }
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: right;
     }
   }
 
+  // ---------------------------------------------------
+  // Overlay (inside image container)
+  // ---------------------------------------------------
   &__container-overlay {
     position: absolute;
-    z-index: fn.z(overlay);
+    z-index: $z-overlay-streamings;
     inset: 0;
     pointer-events: none;
     background:
-      linear-gradient(to bottom, #0d0d0d 0%, transparent 55%),
-      linear-gradient(to top, #0d0d0d 0%, transparent 35%),
-      linear-gradient(to right, #0d0d0d 0%, transparent 40%),
-      linear-gradient(to left, #0d0d0d 0%, transparent 45%);
+      linear-gradient(to right,  $overlay-start-streamings 0%, $overlay-end-streamings 50%),
+      linear-gradient(to bottom, $overlay-start-streamings 0%, $overlay-end-streamings 50%),
+      linear-gradient(to top,    $overlay-start-streamings 0%, $overlay-end-streamings 50%),
+      linear-gradient(to left,   $overlay-start-streamings 2%, $overlay-end-streamings 50%);
   }
 
+  // ---------------------------------------------------
+  // Content Container
+  // ---------------------------------------------------
   &__container-content {
-    @include mix.flex(row, center, flex-start, 0);
+    position: absolute;
+    z-index: $z-content-streamings;
+    inset: 0;
+    @include mix.flex(row, flex-start, flex-start, 0);
     width: 100%;
-    max-width: 512px;
-    padding: token.$gutter 0 token.$gutter 0.5rem;
+    padding: $padding-content;
 
-    @include mix.respond(xl) { padding: token.$gutter 0 token.$gutter token.$gutter; }
-    // @include mix.respond(lg) { @include mix.flex(column, center, flex-start, token.$gutter); }
-    @include mix.respond(xxs) { padding: token.$gutter token.$gutter calc(token.$gutter - 1rem) token.$gutter; }
+    @include mix.respond(xl) { position: relative; padding: $padding-content-xl; }
+    @include mix.respond(xs) { @include mix.flex(column, flex-start, flex-start, token.$gutter); }
 
-    nav {
+    // ---------------------------------------------------
+    // Nav & List
+    // ---------------------------------------------------
+    nav { width: 100%; }
+
+    ul { width: 100%; }
+
+    li {
+      position: relative;
       width: 100%;
-      max-width: 380px;
+      max-width: $max-width-li;
+      @include mix.flex(row, space-between, center, 0); // space-between reservado para ícone futuro
 
-      ul {
-        width: 100%;
+      @include mix.respond(sm) { border-bottom: $border-streamings; &:last-child { border-bottom: none; } }
+    }
 
-        li {
-          width: 100%;
-          max-width: 320px;
-          position: relative;
-          @include mix.flex(row, space-between, center, 0);
-          white-space: nowrap;
+    // ---------------------------------------------------
+    // Links
+    // ---------------------------------------------------
+    a {
+      padding: $padding-link;
+      color: $color-link;
+      transition:
+        padding-left $transition-link,
+        color        $transition-link;
 
-          border-bottom: 1px solid token.$color-border;
-          &:last-child { border-bottom: none; }
-
-          a {
-            padding: 1rem;
-            padding-left: 0;
-            color: inherit;
-
-            transition:
-              padding-left token.$duration-200 token.$ease-standard,
-              color token.$duration-200 token.$ease-standard;
-          
-            // &::after {          
-            //   content: "";
-            //   position: absolute;
-            //   inset: 0;
-            // }
-
-            &:hover, &:focus-visible {
-              color: token.$color-accent;
-              padding-left: 16px; 
-
-              // O SEGREDO: O seletor '~' (irmão) acha o SVG que vem 
-              // logo depois do <a> no HTML e acende ele junto!
-              & ~ svg {
-                opacity: 1; 
-                transform: translateX(0);
-                color: token.$color-accent; 
-              }
-            }
-
-            &:active { 
-              color: fn.color-dark(token.$color-accent, 25%); 
-              
-              & ~ svg {
-                color: fn.color-dark(token.$color-accent, 25%); 
-              }
-            }
-          }
-
-          svg {
-            opacity: token.$opacity-0;
-            color: inherit;
-            transition: opacity token.$duration-200 token.$ease-standard,
-                        transform token.$duration-200 token.$ease-standard,
-                        color token.$duration-200 token.$ease-standard;
-            transform: translateX(-1rem);
-            pointer-events: none;
-          }
-        }
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
       }
+
+      &:hover,
+      &:focus-visible { color: $color-link-hover; padding-left: $padding-link-hover; }
+      &:active        { color: $color-link-active; }
     }
   }
 }
