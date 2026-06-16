@@ -23,10 +23,10 @@ $overlay-end-streamings:      rgba(13, 13, 13, 0); // token.$color-bg-primary â†
 // Semantic Tokens (Content Container)
 // ---------------------------------------------------
 $z-overlay-streamings:  fn.z(overlay);
-$z-content-streamings:  fn.z(content);   // verify layer exists in _layers.scss
-$padding-content:        token.$gutter 0 token.$gutter token.$space-8;
-$padding-content-xl:     token.$gutter token.$gutter calc(token.$gutter - token.$space-ui-16) token.$gutter;
-$max-width-li:           480px;
+$z-content-streamings:  fn.z(content);
+$padding-content:       token.$gutter 0 token.$gutter token.$space-8;
+$padding-content-xl:    token.$gutter token.$gutter calc(token.$gutter - token.$space-ui-16) token.$gutter;
+$max-width-li:          480px;
 
 // ---------------------------------------------------
 // Semantic Tokens (Links)

@@ -1,0 +1,45 @@
+@use "../abstracts/tokens" as token;
+@use "../abstracts/mixins" as mix;
+@use "../abstracts/functions" as fn;
+
+// ===================================================
+// AXIS — STREAMINGS (Section)
+// ===================================================
+
+// ---------------------------------------------------
+// Semantic Tokens (Surface)
+// ---------------------------------------------------
+$bg-sounds:      token.$color-bg-primary;
+$border-sounds:  1px solid token.$color-border;
+
+.sounds {
+  background-color: $bg-sounds;
+  border-bottom: $border-sounds;
+
+  @include mix.flex(column, flex start, flex-start, token.$gutter);
+  padding: token.$gutter 0 token.$gutter token.$space-8;
+  @include mix.respond(xl) { padding: token.$gutter; }
+
+  // ---------------------------------------------------
+  // Content Container
+  // ---------------------------------------------------
+  &__container-content {
+    max-width: 12ch;
+    @include mix.respond(xs) { max-width: none; }
+  }
+
+  &__container-cards {
+    width: 100%;
+    margin-top: token.$space-16;
+
+    ul {
+        width: 100%;
+        @include mix.flex(row, center, center, token.$space-16);
+        flex-wrap: wrap;
+
+        // li {
+        //     width: calc(100% / 4 - token.$space-16);
+        // }
+    }
+  }
+}

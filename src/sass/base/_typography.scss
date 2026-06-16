@@ -121,6 +121,6 @@ h2 {
     border-radius: 2px;
     background-color: token.$color-accent;
     top: 4em;
-    @include mix.respond(lg) { top: 2.8em; }
+    @include mix.respond(xs) { top: 2.8em; }
   }
 }
