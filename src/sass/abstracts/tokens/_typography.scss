@@ -7,26 +7,28 @@
 // Font Size Scale
 // Modular Proportion: Major Third (1.25) + Traditional UI
 // ---------------------------------------------------
-$font-10: 0.64rem;    // ~10.24px (Major Third -2)
-$font-12: 0.75rem;    // 12px     (Manual UI)
-$font-13: 0.8rem;     // ~12.8px  (Major Third -1)
-$font-14: 0.875rem;   // 14px     (Manual UI)
-$font-16: 1rem;       // 16px     (Base & Major Third 0)
-$font-18: 1.125rem;   // 18px     (Manual UI)
-$font-20: 1.25rem;    // 20px     (Major Third 1)
-$font-24: 1.5rem;     // 24px     (Manual UI)
-$font-25: 1.5625rem;  // 25px     (Major Third 2)
-$font-31: 1.953rem;   // ~31.25px (Major Third 3)
-$font-32: 2rem;       // 32px     (Manual UI)
-$font-39: 2.441rem;   // ~39.06px (Major Third 4)
-$font-40: 2.5rem;     // 40px     (Manual UI)
-$font-48: 3rem;       // 48px     (Manual UI)
-$font-49: 3.051rem;   // ~48.83px (Major Third 5)
-$font-61: 3.815rem;   // ~61.04px (Major Third 6)
-$font-64: 4rem;       // 64px     (Manual UI)
+$font-10: 0.64rem;    // ~10.24px
+$font-12: 0.75rem;    // 12px     
+$font-13: 0.8rem;     // ~12.8px  
+$font-14: 0.875rem;   // 14px     
+$font-15: 0.938rem;   // ~15px    
+$font-16: 1rem;       // 16px     
+$font-18: 1.125rem;   // 18px     
+$font-20: 1.25rem;    // 20px     
+$font-24: 1.5rem;     // 24px     
+$font-25: 1.5625rem;  // 25px    
+$font-31: 1.953rem;   // ~31.25px
+$font-32: 2rem;       // 32px     
+$font-39: 2.441rem;   // ~39.06px
+$font-40: 2.5rem;     // 40px     
+$font-48: 3rem;       // 48px     
+$font-49: 3.051rem;   // ~48.83px
+$font-61: 3.815rem;   // ~61.04px
+$font-64: 4rem;       // 64px     
 
 $font-display: clamp(5.2rem, 8.636vw + 3.473rem, 9rem);
 $font-h2:      clamp(0.75rem, 0.893vw + 0.571rem, 1rem);
+$font-h3:      $font-15; // A confirmar
 $font-label:   clamp(0.625rem, 0.568vw + 0.511rem, 0.875rem);
 
 // ---------------------------------------------------

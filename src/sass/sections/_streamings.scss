@@ -25,7 +25,7 @@ $overlay-end-streamings:      rgba(13, 13, 13, 0); // token.$color-bg-primary â†
 $z-overlay-streamings:  fn.z(overlay);
 $z-content-streamings:  fn.z(content);
 $padding-content:       token.$gutter 0 token.$gutter token.$space-8;
-$padding-content-xl:    token.$gutter token.$gutter calc(token.$gutter - token.$space-ui-16) token.$gutter;
+$padding-content-xl:    token.$gutter token.$gutter calc(token.$gutter - token.$space-8) token.$gutter;
 $max-width-li:          480px;
 
 // ---------------------------------------------------
@@ -48,6 +48,8 @@ $transition-link:       token.$duration-200 token.$ease-standard;
 
   background-color: $bg-streamings;
   border-bottom: $border-streamings;
+
+  @include mix.respond(sm) { min-height: 0; }
 
   // ---------------------------------------------------
   // Image Container
@@ -95,7 +97,7 @@ $transition-link:       token.$duration-200 token.$ease-standard;
     padding: $padding-content;
 
     @include mix.respond(xl) { position: relative; padding: $padding-content-xl; }
-    @include mix.respond(xs) { @include mix.flex(column, flex-start, flex-start, token.$gutter); }
+    @include mix.respond(xs) { @include mix.flex(column, flex-start, flex-start, token.$space-16); }
 
     // ---------------------------------------------------
     // Nav & List
@@ -108,7 +110,7 @@ $transition-link:       token.$duration-200 token.$ease-standard;
       position: relative;
       width: 100%;
       max-width: $max-width-li;
-      @include mix.flex(row, space-between, center, 0); // space-between reservado para Ã­cone futuro
+      @include mix.flex(row, space-between, center, 0);
 
       @include mix.respond(sm) { border-bottom: $border-streamings; &:last-child { border-bottom: none; } }
     }

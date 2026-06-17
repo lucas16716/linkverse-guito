@@ -33,7 +33,12 @@ $line-height-heading: token.$lh-heading;    // 1.1
 $letter-spc-heading:  token.$ls-heading;    // -.02em
 $color-heading: token.$color-text-secondary; // #A2A2A2
 $color-heading-accent: token.$color-accent; // #7A1F1F
+
 $font-size-h2: token.$font-h2;              // A confirmar
+
+$font-size-h3: token.$font-h3;              // A confirmar
+$font-color-h3: token.$color-text-primary;    // #D9D9D9;
+
 
 
 // ---------------------------------------------------
@@ -61,6 +66,16 @@ p {
   &.label {
     font-size: $font-size-label;
     font-weight: $font-weight-label;
+  }
+
+  &.desc { letter-spacing: token.$ls-display;
+    font-size: token.$font-13; // A confirmar
+    color: token.$color-accent;
+
+    &.year {
+      
+      color: token.$color-text-secondary; // #A2A2A2
+    }
   }
 
   &.decoration {
@@ -123,4 +138,10 @@ h2 {
     top: 4em;
     @include mix.respond(xs) { top: 2.8em; }
   }
+}
+
+h3 {
+  font-size: $font-size-h3;
+  letter-spacing: token.$ls-display;
+  color: $font-color-h3;
 }

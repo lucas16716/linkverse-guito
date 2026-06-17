@@ -1,5 +1,6 @@
 @use "../abstracts/tokens" as token;
 @use "../abstracts/mixins" as mix;
+@use "../abstracts/functions" as fn;
 
 // ===================================================
 // AXIS — CARD (Structural Component)
@@ -9,40 +10,71 @@
 // ---------------------------------------------------
 // Semantic Card Token
 // ---------------------------------------------------
-$transition-card:    token.$duration-200 token.$ease-standard;
+$border-card:         1px solid token.$color-border;
+$border-rd-card:      token.$radius-xs;
+$bg-card:             token.$color-bg-primary;
 
-$shadow-card-hover:  token.$shadow-md;
-$shadow-card-active: token.$shadow-sm;
+$transition-card:     token.$duration-200 token.$ease-standard;
+$transition-card-alt: token.$duration-400 token.$ease-standard;
 
-$gap-content-card: token.$space-ui-24;
-$pad-content-card: token.$space-ui-24;
+
+
+$gap-content-card: token.$space-ui-10;
+$pad-content-card: token.$space-24 token.$space-16 token.$space-ui-28;
 
 // ---------------------------------------------------
 // Card Default
 // ---------------------------------------------------
-.card { 
+.card { position:relative;
   @include mix.flex($direction: column);
-  width: 100%;            
-  border: 1px solid currentColor;
+  z-index: fn.z(base);
+  width: 100%;
+
+  border: $border-card;
+  border-radius: $border-rd-card;
+  background-color: $bg-card;
+
   overflow: hidden;
-  transition:
-    border-color $transition-card,
-    box-shadow $transition-card,
-    transform $transition-card;
-  
+  transition: transform $transition-card;
+
+  img {
+    position: relative;
+    z-index: fn.z(content);
+
+    border-bottom: $border-card;
+    
+    transition: transform $transition-card-alt;    
+  }
+
+  svg {
+    position: absolute;
+    z-index: fn.z(overlay);
+    bottom: token.$space-ui-10;
+    right: token.$space-ui-10;
+    transition: transform $transition-card-alt, color $transition-card-alt;
+
+      
+    }
+    
   // ---------------------------------------------------
   // Interactive State
   // ---------------------------------------------------
   &.is-interactive { 
     cursor: pointer;
     
-    @media (hover: hover) {
-      &:hover { transform: translateY(-3px); box-shadow: $shadow-card-hover; }
+    &:hover, &:focus-visible {
+      // transform: translateY(-2px);
+      
+      img { transform: scale(1.045); }
+      
+      svg {
+      color: token.$color-accent; // O vermelho do hover
+      transform: scale(1.2);
+    }
     }
     
-    &:focus-visible { transform: translateY(-3px); box-shadow: $shadow-card-hover; @include mix.focus-ring($radius: 0); }
 
-    &:active { transform: translateY(-1px); box-shadow: $shadow-card-active; }
+    &:active { transform: translateY(2px); }
   }
 
   // ---------------------------------------------------

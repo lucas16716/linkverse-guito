@@ -9,37 +9,82 @@
 // ---------------------------------------------------
 // Semantic Tokens (Surface)
 // ---------------------------------------------------
-$bg-sounds:      token.$color-bg-primary;
-$border-sounds:  1px solid token.$color-border;
+$bg-sounds: token.$color-bg-primary;
+$border-sounds: 1px solid token.$color-border;
 
 .sounds {
   background-color: $bg-sounds;
   border-bottom: $border-sounds;
 
-  @include mix.flex(column, flex start, flex-start, token.$gutter);
+  @include mix.flex(
+    row,
+    flex start,
+    flex-start,
+    calc(token.$section-pad - token.$gutter)
+  );
   padding: token.$gutter 0 token.$gutter token.$space-8;
-  @include mix.respond(xl) { padding: token.$gutter; }
+  @include mix.respond(xl) {
+    flex-direction: column;
+    padding: token.$gutter;
+    gap: token.$gutter;
+  }
 
   // ---------------------------------------------------
   // Content Container
   // ---------------------------------------------------
   &__container-content {
     max-width: 12ch;
-    @include mix.respond(xs) { max-width: none; }
+    @include mix.respond(xs) {
+      max-width: none;
+    }
   }
 
   &__container-cards {
     width: 100%;
-    margin-top: token.$space-16;
+    margin-block: token.$space-16;
+
+    @include mix.respond(dv) {
+      margin-block: token.$space-8;
+    }
 
     ul {
-        width: 100%;
-        @include mix.flex(row, center, center, token.$space-16);
-        flex-wrap: wrap;
+      width: 100%;
+      @include mix.flex(row, flex-start, center, token.$space-8);
+      flex-wrap: wrap;
+      @include mix.respond(dv) {
+        justify-content: center;
+      }
 
-        // li {
-        //     width: calc(100% / 4 - token.$space-16);
+      li {
+        flex: 0 0 200px;
+        max-width: 100%;
+        height: auto;
+
+        // @include mix.respond(dv) {
+        //   flex: 0 0 220px;
         // }
+      }
+    }
+  }
+
+  @include mix.respond(dv) {
+    ul {
+      overflow-x: auto;
+      overflow-y: hidden;
+      flex-wrap: nowrap;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      justify-content: flex-start;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      li {
+        scroll-snap-align: start;
+      }
     }
   }
 }
