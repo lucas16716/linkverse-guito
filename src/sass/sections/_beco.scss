@@ -1,0 +1,102 @@
+@use "../abstracts/tokens" as token;
+@use "../abstracts/mixins" as mix;
+@use "../abstracts/functions" as fn;
+
+// ===================================================
+// AXIS — HEADER (Section)
+// ===================================================
+
+$overlay-start-beco: token.$color-bg-primary;
+$overlay-end-beco: rgba(13, 13, 13, 0); // token.$color-bg-primary → transparent
+
+.beco {font-family: "Anton", Ubuntu, system-ui, -apple-system, sans-serif; letter-spacing: 0.08em;
+  position: relative;
+  width: 100%;
+  height: 620px;
+  //   min-height: 400px;
+
+  @include mix.flex(column, space-between, flex-start, token.$gutter);
+  padding: token.$section-pad token.$gutter token.$gutter;
+
+  background: token.$color-bg-primary url("/assets/media/img/beco-bg.jpg")
+    no-repeat center;
+  background-size: cover;
+
+//   font-weight: token.$weight-500;
+
+  h4 {
+    z-index: fn.z(content);
+    align-self: flex-start;
+  }
+
+  &__manifest {
+    width: 100%;
+    z-index: fn.z(content);
+    @include mix.flex(column, center, flex-start, token.$space-16);
+
+      
+  }
+
+  &__cta {margin-top: token.$space-16;
+    z-index: fn.z(content);
+    // align-self: flex-start;
+    @include mix.flex(column, flex-start, flex-start, token.$space-8);
+
+    p { color: token.$color-accent; font-family: "Anton", Ubuntu, system-ui, -apple-system, sans-serif; }
+
+    a {
+      @include mix.flex(row, center, center, token.$space-ui-12);
+      padding: token.$space-16 token.$space-24 token.$space-16 token.$space-16;
+
+      border: 1px solid token.$color-text-primary;
+      border-radius: token.$radius-xs;
+      transition: border-color token.$duration-200 token.$ease-standard, color token.$duration-200 token.$ease-standard;
+
+      span {
+        font-family: "Anton", Ubuntu, system-ui, -apple-system, sans-serif;
+        
+      }
+
+        &:hover, &:focus-visible {
+            border-color: token.$color-accent;
+            color: token.$color-accent;
+        }
+
+        &:focus-visible { @include mix.focus-ring(token.$color-text-primary) }
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    z-index: fn.z(overlay);
+    inset: 0;
+    pointer-events: none;
+
+    background:
+      linear-gradient(to right, $overlay-start-beco 0%, $overlay-end-beco 15%),
+      linear-gradient(to bottom, $overlay-start-beco 0%, $overlay-end-beco 25%),
+      linear-gradient(to top, $overlay-start-beco 0%, $overlay-end-beco 15%),
+      linear-gradient(to left, $overlay-start-beco 0%, $overlay-end-beco 15%);
+
+    @include mix.respond(xl) {
+      background:
+        linear-gradient(to right, $overlay-start-beco 0%, $overlay-end-beco 10%),
+        linear-gradient(
+          to bottom,
+          $overlay-start-beco 0%,
+          $overlay-end-beco 20%
+        ),
+        linear-gradient(to top, $overlay-start-beco 0%, $overlay-end-beco 20%),
+        linear-gradient(to left, $overlay-start-beco 0%, $overlay-end-beco 10%);
+
+        background-position: right;
+    }
+  }
+
+  &__copy {
+    z-index: fn.z(content);
+    align-self: center;
+    text-align: center;
+    color: token.$color-text-muted;
+  }
+}

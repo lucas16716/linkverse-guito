@@ -27,6 +27,7 @@ $font-61: 3.815rem;   // ~61.04px
 $font-64: 4rem;       // 64px     
 
 $font-display: clamp(5.2rem, 8.636vw + 3.473rem, 9rem);
+$font-display-alt: clamp(3.64rem, 6.045vw + 2.431rem, 6.3rem);
 $font-h2:      clamp(0.75rem, 0.893vw + 0.571rem, 1rem);
 $font-h3:      $font-15; // A confirmar
 $font-label:   clamp(0.625rem, 0.568vw + 0.511rem, 0.875rem);

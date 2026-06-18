@@ -59,10 +59,6 @@ $border-sounds: 1px solid token.$color-border;
         flex: 0 0 200px;
         max-width: 100%;
         height: auto;
-
-        // @include mix.respond(dv) {
-        //   flex: 0 0 220px;
-        // }
       }
     }
   }

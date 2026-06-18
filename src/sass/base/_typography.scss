@@ -22,10 +22,12 @@ $font-weight-label: token.$weight-500; // 500 Medium
 
 // Display (H1)
 $font-family-display: "Anton", Ubuntu, system-ui, -apple-system, sans-serif;
-$font-size-display:   token.$font-display;         // A confirmar
 $font-weight-display: token.$weight-400;    // Regular
 $line-height-display: token.$lh-display;    // .85
 $letter-spacing-display: token.$ls-display; // -.04em
+
+$font-size-display:     token.$font-display;         // A confirmar
+$font-size-display-alt: token.$font-display-alt; // A confirmar
 
 // Headings
 $font-weight-heading: token.$weight-500;    // A confirmar - 500 Medium
@@ -100,21 +102,23 @@ a {
 }
 
 // ---------------------------------------------------
-// Display (H1)
+// Display (H1 e H4)
 // ---------------------------------------------------
-h1 {
+h1, h4 {
   font-family:    $font-family-display;
-  font-size:      $font-size-display;
   font-weight:    $font-weight-display;
   line-height:    $line-height-display;
   letter-spacing: $letter-spacing-display;
   text-transform: uppercase;
 }
 
+h1 { font-size: $font-size-display; }
+h4 { font-size: $font-size-display-alt; }
+
 // ---------------------------------------------------
 // Headings
 // ---------------------------------------------------
-h2, h3, h4, h5, h6 {
+h2, h3, h5, h6 {
   font-weight:    $font-weight-heading;
   line-height:    $line-height-heading;
   letter-spacing: $letter-spc-heading;
