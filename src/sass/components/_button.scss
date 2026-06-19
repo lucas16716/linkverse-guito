@@ -10,7 +10,6 @@
 // Semantic Button Tokens
 // ---------------------------------------------------
 $gap-btn:         token.$space-ui-2;
-// $line-height-btn: token.$lh-none;
 $transition-btn:  token.$duration-200 token.$ease-standard;
 
 $op-dsbld-btn:    token.$opacity-60;
@@ -31,7 +30,6 @@ $padding-btn-xl:  token.$space-ui-16 token.$space-ui-32;
   background-color: transparent;
   border: 1px solid currentColor;
   
-  // line-height: $line-height-btn;
   text-decoration: none;
   white-space: nowrap;
   -webkit-user-select: none;

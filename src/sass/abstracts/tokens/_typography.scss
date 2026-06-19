@@ -26,11 +26,18 @@ $font-49: 3.051rem;   // ~48.83px
 $font-61: 3.815rem;   // ~61.04px
 $font-64: 4rem;       // 64px     
 
-$font-display: clamp(5.2rem, 8.636vw + 3.473rem, 9rem);
-$font-display-alt: clamp(3.64rem, 6.045vw + 2.431rem, 6.3rem);
-$font-h2:      clamp(0.75rem, 0.893vw + 0.571rem, 1rem);
-$font-h3:      $font-15; // A confirmar
-$font-label:   clamp(0.625rem, 0.568vw + 0.511rem, 0.875rem);
+$font-fml: "Inter", Ubuntu, system-ui, -apple-system, sans-serif;
+$font-alt: "Anton", Ubuntu, system-ui, -apple-system, sans-serif;
+
+$font-base:        clamp(0.90625rem, 0.213vw + 0.864rem, 1rem);   // 14.5px - 16px 
+$font-label:       clamp(0.625rem, 0.568vw + 0.511rem, 0.875rem); // 10px - 14px
+$font-link:        clamp(1.75rem, 1.705vw + 1.409rem, 2.5rem);    // 28px - 40px
+
+$font-display:     clamp(5.2rem, 8.636vw + 3.473rem, 9rem);       // 83.2px - 144px
+$font-display-alt: clamp(3.64rem, 5.08vw + 2.624rem, 5.875rem);   // 58.24px - 94px
+$font-h2:          clamp(0.75rem, 0.893vw + 0.571rem, 1rem);      // 12px - 16px
+$font-h3:          $font-15;                                      // 15px
+
 
 // ---------------------------------------------------
 // Font Weight Scale
@@ -55,6 +62,7 @@ $lh-small: 1.5;
 $ls-display: -.04em;
 $ls-heading: -.02em;
 $ls-body: 0;
+$ls-beco: 0.08em;
 $ls-label: .22em;
 
 // ---------------------------------------------------

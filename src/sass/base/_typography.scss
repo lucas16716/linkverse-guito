@@ -1,5 +1,6 @@
 @use "../abstracts/tokens" as token;
 @use "../abstracts/mixins" as mix;
+@use "../abstracts/functions" as fn;
 
 // ===================================================
 // AXIS — TYPOGRAPHY BASE
@@ -8,40 +9,53 @@
 // ---------------------------------------------------
 // Semantic Tokens
 // ---------------------------------------------------
+
 // Base
-$font-family-base: "Inter", Ubuntu, system-ui, -apple-system, sans-serif;
-$font-size-base:   token.$font-16;           // A confirmar
-$font-weight-base: token.$weight-400;        // A confirmar
-$line-height-base: token.$lh-body;         // 1.7
-$letter-spc-base:  token.$ls-body;   // 0
-$color-base: token.$color-text-primary; // #D9D9D9;
+$font-family-base: token.$font-fml;      // Inter
+$font-size-base:   token.$font-base;     // 15px - 16px       
+$font-weight-base: token.$weight-400;    // 400 Regular
+$line-height-base: token.$lh-body;       // 1.7
+$letter-spc-base:  token.$ls-body;       // 0
+$color-base: token.$color-text-primary;  // #D9D9D9;
 
 // Variant - Label
-$font-size-label: token.$font-label; // A confirmar
-$font-weight-label: token.$weight-500; // 500 Medium
+$font-size-label:   token.$font-label;   // 10px - 14px
+$font-weight-label: token.$weight-500;   // 500 Medium
 
-// Display (H1)
-$font-family-display: "Anton", Ubuntu, system-ui, -apple-system, sans-serif;
-$font-weight-display: token.$weight-400;    // Regular
-$line-height-display: token.$lh-display;    // .85
-$letter-spacing-display: token.$ls-display; // -.04em
+// Variant - Description
+$font-size-desc:    token.$font-13;      // ~12.8px
+$letter-spc-desc:   token.$ls-display;   // -.04em
+$color-desc:        token.$color-accent; // #7A1F1F
+$color-desc-year:   token.$color-text-secondary; // #A2A2A2
 
-$font-size-display:     token.$font-display;         // A confirmar
-$font-size-display-alt: token.$font-display-alt; // A confirmar
+// Variant - Links
+$font-family-link: token.$font-alt;      // Anton
+$font-size-link:   token.$font-link;     // 28px - 40px
+
+// Variant - Beco
+$font-family-beco: token.$font-alt;             // Anton
+$letter-spc-beco:  token.$ls-beco;              // 0.08em
+$font-color-beco: token.$color-text-secondary;  // #A2A2A2
+
+// Display (H1 / H2)
+$font-family-display:    token.$font-alt;        // Anton
+$line-height-display:    token.$lh-display;      // .85
+$letter-spacing-display: token.$ls-display;      // -.04em
+
+$font-size-display:     token.$font-display;     // 83.2px - 144px
+$font-size-display-alt: token.$font-display-alt; // 58.24px - 100.8px
 
 // Headings
-$font-weight-heading: token.$weight-500;    // A confirmar - 500 Medium
-$line-height-heading: token.$lh-heading;    // 1.1
-$letter-spc-heading:  token.$ls-heading;    // -.02em
-$color-heading: token.$color-text-secondary; // #A2A2A2
-$color-heading-accent: token.$color-accent; // #7A1F1F
+$line-height-heading: token.$lh-heading;      // 1.1
+$letter-spc-heading:  token.$ls-heading;      // -.02em
+$color-heading: token.$color-text-secondary;  // #A2A2A2
+$color-heading-accent: token.$color-accent;   // #7A1F1F
 
-$font-size-h2: token.$font-h2;              // A confirmar
+$font-size-h2:  token.$font-h2;               // 12px - 16px
 
-$font-size-h3: token.$font-h3;              // A confirmar
+$font-size-h3:      token.$font-h3;           // 15px - 20px
+$letter-spacing-h3: token.$ls-display;        // -.04em
 $font-color-h3: token.$color-text-primary;    // #D9D9D9;
-
-
 
 // ---------------------------------------------------
 // Default Typography
@@ -53,7 +67,7 @@ html {
 
 body {
   font-family: $font-family-base;
-  // font-size:   $font-size-base; // A Confirmar
+  font-size:   $font-size-base;
   font-weight: $font-weight-base;
   line-height: $line-height-base;
   letter-spacing: $letter-spc-base;
@@ -65,19 +79,14 @@ body {
 // Variants
 // ---------------------------------------------------
 p {
-  &.label {
-    font-size: $font-size-label;
-    font-weight: $font-weight-label;
-  }
+  &.label { font-size: $font-size-label; font-weight: $font-weight-label; }
 
-  &.desc { letter-spacing: token.$ls-display;
-    font-size: token.$font-13; // A confirmar
-    color: token.$color-accent;
-
-    &.year {
-      
-      color: token.$color-text-secondary; // #A2A2A2
-    }
+  &.desc {
+    font-size: $font-size-desc;
+    letter-spacing: $letter-spc-desc;
+    color: $color-desc;
+    
+    &.year { color: $color-desc-year; }
   }
 
   &.decoration {
@@ -96,30 +105,31 @@ p {
 
 a { 
   &.text-link {
-    font-family: $font-family-display;
-    font-size: clamp(1.75rem, 1.705vw + 1.409rem, 2.5rem);
+    font-family: $font-family-link;
+    font-size:   $font-size-link;
   }
 }
+
+.beco { font-family: $font-family-beco; letter-spacing: $letter-spc-beco; color: $font-color-beco; }
 
 // ---------------------------------------------------
 // Display (H1 e H4)
 // ---------------------------------------------------
 h1, h4 {
   font-family:    $font-family-display;
-  font-weight:    $font-weight-display;
+  font-weight:    inherit;
   line-height:    $line-height-display;
   letter-spacing: $letter-spacing-display;
   text-transform: uppercase;
 }
 
 h1 { font-size: $font-size-display; }
-h4 { font-size: $font-size-display-alt; }
+h4 { font-size: $font-size-display-alt; z-index: fn.z(content); }
 
 // ---------------------------------------------------
 // Headings
 // ---------------------------------------------------
-h2, h3, h5, h6 {
-  font-weight:    $font-weight-heading;
+h2, h3, h5 {
   line-height:    $line-height-heading;
   letter-spacing: $letter-spc-heading;
   color:          $color-heading;
@@ -130,6 +140,7 @@ h2, h3, h5, h6 {
 h2 {
   position: relative;
   font-size: $font-size-h2;
+  font-weight: inherit;
   
   &::before {
     content: "";
@@ -146,6 +157,7 @@ h2 {
 
 h3 {
   font-size: $font-size-h3;
-  letter-spacing: token.$ls-display;
+  font-weight: inherit;
+  letter-spacing: $letter-spacing-h3;
   color: $font-color-h3;
 }

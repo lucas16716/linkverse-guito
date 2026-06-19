@@ -31,8 +31,8 @@ $max-width-li:          480px;
 // ---------------------------------------------------
 // Semantic Tokens (Links)
 // ---------------------------------------------------
-$padding-link:          token.$space-ui-16 0;
-$padding-link-hover:    token.$space-ui-16;
+$padding-link:          token.$space-16 0;
+$padding-link-hover:    token.$space-16;
 $color-link:            inherit;
 $color-link-hover:      token.$color-accent;
 $color-link-active:     fn.color-dark(token.$color-accent, 25%);
