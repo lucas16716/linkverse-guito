@@ -7,7 +7,7 @@
 // ===================================================
 
 $overlay-start-beco: token.$color-bg-primary;
-$overlay-end-beco: rgba(13, 13, 13, 0); // token.$color-bg-primary → transparent
+$overlay-end-beco: rgba(13, 13, 13, 0);
 
 
 $padding-link-beco:        token.$space-8 0;
@@ -25,7 +25,7 @@ $color-link-active-beco:   fn.color-dark(token.$color-accent, 25%);
   @include mix.flex(column, space-between, flex-start, token.$section-pad);
   padding: token.$section-pad token.$gutter token.$gutter;
 
-  background: token.$color-bg-primary url("/assets/media/img/beco-bg.jpg") no-repeat center;
+  background: token.$color-bg-primary url("/assets/media/img/beco-bg.webp") no-repeat center;
   background-size: cover;
 
   &__manifest {
@@ -38,7 +38,7 @@ $color-link-active-beco:   fn.color-dark(token.$color-accent, 25%);
     z-index: fn.z(content);
     @include mix.flex(column, flex-start, flex-start, token.$space-8);
 
-    p { color: token.$color-accent; margin-top: token.$space-8; }
+    .label { color: token.$color-accent; margin-top: token.$space-8; }
 
     a {
       @include mix.flex(row, center, center, token.$space-8);

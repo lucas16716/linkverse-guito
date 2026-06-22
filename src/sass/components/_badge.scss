@@ -1,4 +1,5 @@
 @use "../abstracts/tokens" as token;
+@use "../abstracts/functions" as fn;
 
 // ===================================================
 // AXIS — BADGE (Structural Component)
@@ -8,11 +9,38 @@
 // ---------------------------------------------------
 // Semantic Badge Tokens
 // ---------------------------------------------------
-$font-size-badge:   token.$font-13;
-// $line-height-badge: token.$lh-none;
+$font-size-badge:   clamp(0.53125rem, 1.6071vw + 0.2098rem, 0.8125rem);
+$font-weight-badge: token.$weight-500;
+$line-height-badge: token.$lh-none;
 $border-rd-badge:   token.$radius-full;
-$padding-badge:     token.$space-ui-6 token.$space-ui-12;
-$gap-badge:         token.$space-ui-2;
+$padding-badge:     clamp(0.75rem, 0.1724vw + 0.7155rem, 0.875rem) clamp(0.75rem, 0.5172vw + 0.6465rem, 1.125rem);
+$gap-badge:         token.$space-8;
+
+// ---------------------------------------------------
+// Semantic Badge Signature Tokens
+// ---------------------------------------------------
+$bg-signature-badge:           token.$color-bg-primary;
+$border-color-signature-badge: token.$color-border;
+$box-shadow-signature-badge:   0 4px 16px rgba(0, 0, 0, 0.95), 0 0 10px rgba(token.$color-accent, 0.03);
+$transition-signature-badge:   token.$duration-200 token.$ease-standard;
+
+// Typography Shared Base
+$letter-spacing-signature:     token.$ls-copy;
+$color-text-signature:         fn.color-dark(token.$color-text-muted, 20%);
+$color-text-strong-signature:  token.$color-text-muted;
+
+// The Logo - Lucas Code
+$width-logo:                   clamp(0.96875rem, 0.3879vw + 0.8912rem, 1.25rem);
+$height-logo:                  clamp(0.96875rem, 0.3879vw + 0.8912rem, 1.25rem);
+$opacity-logo:                 token.$opacity-40;
+$transition-logo:              token.$duration-200 token.$ease-signature;
+
+// Micro-interactions (Hover / Active)
+$bg-hover-signature-badge:           token.$color-bg-secondary;
+$border-color-hover-signature-badge: token.$color-accent-alt;
+$box-shadow-hover-signature-badge:   0 20px 38px rgba(0, 0, 0, 0.9), 0 0 14px rgba(token.$color-accent, 0.45), 0 0 36px rgba(token.$color-accent, 0.2);
+$color-text-hover-signature:         token.$color-text-secondary;
+$opacity-logo-hover:                 token.$opacity-100;
 
 // ---------------------------------------------------
 // Badge Default
@@ -30,10 +58,71 @@ $gap-badge:         token.$space-ui-2;
   border-radius: $border-rd-badge;
 
   font-size: $font-size-badge;
-  // line-height: $line-height-badge;
+  font-weight: $font-weight-badge;
+  line-height: $line-height-badge;
   
   white-space: nowrap;
   -webkit-user-select: none;
   user-select: none;
   vertical-align: middle;
+
+  // ---------------------------------------------------
+  // Badge Signature
+  // ---------------------------------------------------
+  &.signature {
+    background-color: $bg-signature-badge;
+    border-color: $border-color-signature-badge;
+    box-shadow: $box-shadow-signature-badge;
+    transition:
+      background-color $transition-signature-badge,
+      border-color     $transition-signature-badge,
+      box-shadow       $transition-signature-badge,
+      transform        $transition-signature-badge;
+    
+    // Typography Shared Base   
+    .signature__cta, .signature__text {
+      letter-spacing: $letter-spacing-signature;
+      color: $color-text-signature;
+      transition: color $transition-signature-badge;
+      
+      .hover {
+        color:      $color-text-strong-signature;
+        transition: color $transition-signature-badge;
+      }
+    }
+
+    // The Logo - Lucas Code
+    .signature__logo {
+      width:  $width-logo;
+      height: $height-logo;
+      background-image: url("/assets/media/img/lucascode.webp");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: $opacity-logo;
+      transition: 
+        opacity   $transition-logo,
+        transform $transition-logo,
+        filter    $transition-logo;
+    }
+
+    // Micro-interactions (Hover / Active)
+    &:hover, &:active, &:focus-visible {
+      background: $bg-hover-signature-badge;
+      border-color: $border-color-hover-signature-badge;
+      box-shadow: $box-shadow-hover-signature-badge;
+      transform: translateY(-2px); 
+
+      .signature__text, .signature__cta {
+        color: $color-text-hover-signature;
+        .hover { color: token.$color-accent; font-weight: bold; }
+      }
+      
+      .signature__logo { 
+        opacity: $opacity-logo-hover;
+        transform: scale(1.15) rotate(-6deg);
+        filter: drop-shadow(0 0 4px rgba(token.$color-accent, 0.7));
+      }
+    }   
+  }
 }

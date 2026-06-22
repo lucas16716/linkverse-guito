@@ -30,19 +30,19 @@ $color-desc-year:   token.$color-text-secondary; // #A2A2A2
 
 // Variant - Links
 $font-family-link: token.$font-alt;      // Anton
-$font-size-link:   token.$font-link;     // 28px - 40px
+$font-size-link:   token.$font-link;     // 32px - 40px
 
 // Variant - Beco
 $font-family-beco: token.$font-alt;             // Anton
 $letter-spc-beco:  token.$ls-beco;              // 0.08em
-$font-color-beco: token.$color-text-secondary;  // #A2A2A2
+$font-color-beco:  token.$color-text-secondary; // #A2A2A2
 
 // Display (H1 / H2)
 $font-family-display:    token.$font-alt;        // Anton
 $line-height-display:    token.$lh-display;      // .85
 $letter-spacing-display: token.$ls-display;      // -.04em
 
-$font-size-display:     token.$font-display;     // 83.2px - 144px
+$font-size-display:     token.$font-display;     // 90px - 144px
 $font-size-display-alt: token.$font-display-alt; // 58.24px - 100.8px
 
 // Headings
@@ -78,7 +78,7 @@ body {
 // ---------------------------------------------------
 // Variants
 // ---------------------------------------------------
-p {
+p, time {
   &.label { font-size: $font-size-label; font-weight: $font-weight-label; }
 
   &.desc {
@@ -115,7 +115,7 @@ a {
 // ---------------------------------------------------
 // Display (H1 e H4)
 // ---------------------------------------------------
-h1, h4 {
+h1, .display-alt {
   font-family:    $font-family-display;
   font-weight:    inherit;
   line-height:    $line-height-display;
@@ -124,7 +124,7 @@ h1, h4 {
 }
 
 h1 { font-size: $font-size-display; }
-h4 { font-size: $font-size-display-alt; z-index: fn.z(content); }
+.display-alt { font-size: $font-size-display-alt; z-index: fn.z(content); }
 
 // ---------------------------------------------------
 // Headings

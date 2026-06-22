@@ -63,12 +63,11 @@ $pad-content-card: token.$space-24 token.$space-16 token.$space-ui-28;
     cursor: pointer;
     
     &:hover, &:focus-visible {
-      // transform: translateY(-2px);
       
       img { transform: scale(1.045); }
       
       svg {
-      color: token.$color-accent; // O vermelho do hover
+      color: token.$color-accent;
       transform: scale(1.2);
     }
     }

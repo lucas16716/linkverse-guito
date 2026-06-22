@@ -54,7 +54,7 @@ $transition-link:       token.$duration-200 token.$ease-standard;
   // ---------------------------------------------------
   // Image Container
   // ---------------------------------------------------
-  &__container-img {
+  &__img {
     position: absolute;
     top: 0; right: 0; bottom: 0;
     width: 100%;
@@ -73,22 +73,22 @@ $transition-link:       token.$duration-200 token.$ease-standard;
   // ---------------------------------------------------
   // Overlay (inside image container)
   // ---------------------------------------------------
-  &__container-overlay {
+  &__overlay {
     position: absolute;
     z-index: $z-overlay-streamings;
     inset: 0;
     pointer-events: none;
     background:
-      linear-gradient(to right,  $overlay-start-streamings 0%, $overlay-end-streamings 50%),
-      linear-gradient(to bottom, $overlay-start-streamings 0%, $overlay-end-streamings 50%),
-      linear-gradient(to top,    $overlay-start-streamings 0%, $overlay-end-streamings 50%),
-      linear-gradient(to left,   $overlay-start-streamings 2%, $overlay-end-streamings 50%);
+      linear-gradient(to right,  $overlay-start-streamings 50%, $overlay-end-streamings 65%),
+      linear-gradient(to bottom, $overlay-start-streamings 0%, $overlay-end-streamings 40%),
+      linear-gradient(to top,    $overlay-start-streamings 0%, $overlay-end-streamings 60%),
+      linear-gradient(to left,   $overlay-start-streamings 3%, $overlay-end-streamings 40%);
   }
 
   // ---------------------------------------------------
   // Content Container
   // ---------------------------------------------------
-  &__container-content {
+  &__content {
     position: absolute;
     z-index: $z-content-streamings;
     inset: 0;

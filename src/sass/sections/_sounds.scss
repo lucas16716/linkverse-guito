@@ -32,14 +32,14 @@ $border-sounds: 1px solid token.$color-border;
   // ---------------------------------------------------
   // Content Container
   // ---------------------------------------------------
-  &__container-content {
+  &__content {
     max-width: 12ch;
     @include mix.respond(xs) {
       max-width: none;
     }
   }
 
-  &__container-cards {
+  &__cards {
     width: 100%;
     margin-block: token.$space-16;
 
