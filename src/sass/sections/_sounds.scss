@@ -3,30 +3,36 @@
 @use "../abstracts/functions" as fn;
 
 // ===================================================
-// AXIS — STREAMINGS (Section)
+// AXIS — SOUNDS (Section)
 // ===================================================
 
 // ---------------------------------------------------
 // Semantic Tokens (Surface)
 // ---------------------------------------------------
-$bg-sounds: token.$color-bg-primary;
-$border-sounds: 1px solid token.$color-border;
+$bg-sounds:      token.$color-bg-primary;
+$border-sounds:  1px solid token.$color-border;
 
+// ---------------------------------------------------
+// Semantic Tokens (Content Container)
+// ---------------------------------------------------
+$padding-content-sounds:     token.$gutter 0 token.$gutter token.$space-8;
+$padding-content-xl-sounds:  token.$gutter;
+$gap-container:              calc(token.$section-pad - token.$gutter);
+
+// ---------------------------------------------------
+// Component Definition
+// ---------------------------------------------------
 .sounds {
   background-color: $bg-sounds;
-  border-bottom: $border-sounds;
+  border-bottom:    $border-sounds;
+  padding:          $padding-content-sounds;
 
-  @include mix.flex(
-    row,
-    flex start,
-    flex-start,
-    calc(token.$section-pad - token.$gutter)
-  );
-  padding: token.$gutter 0 token.$gutter token.$space-8;
+  @include mix.flex(row, flex-start, flex-start, $gap-container);
+
   @include mix.respond(xl) {
     flex-direction: column;
-    padding: token.$gutter;
-    gap: token.$gutter;
+    padding:        $padding-content-xl-sounds;
+    gap:            token.$gutter;
   }
 
   // ---------------------------------------------------
@@ -34,11 +40,15 @@ $border-sounds: 1px solid token.$color-border;
   // ---------------------------------------------------
   &__content {
     max-width: 12ch;
+
     @include mix.respond(xs) {
       max-width: none;
     }
   }
 
+  // ---------------------------------------------------
+  // Cards Container
+  // ---------------------------------------------------
   &__cards {
     width: 100%;
     margin-block: token.$space-16;
@@ -51,6 +61,7 @@ $border-sounds: 1px solid token.$color-border;
       width: 100%;
       @include mix.flex(row, flex-start, center, token.$space-8);
       flex-wrap: wrap;
+
       @include mix.respond(dv) {
         justify-content: center;
       }
@@ -63,6 +74,9 @@ $border-sounds: 1px solid token.$color-border;
     }
   }
 
+  // ---------------------------------------------------
+  // Responsive Touch Scroll (DV Breakpoint)
+  // ---------------------------------------------------
   @include mix.respond(dv) {
     ul {
       overflow-x: auto;
@@ -70,17 +84,12 @@ $border-sounds: 1px solid token.$color-border;
       flex-wrap: nowrap;
       scrollbar-width: none;
       -ms-overflow-style: none;
-      -webkit-overflow-scrolling: touch;
       scroll-snap-type: x mandatory;
       justify-content: flex-start;
 
-      &::-webkit-scrollbar {
-        display: none;
-      }
+      &::-webkit-scrollbar { display: none; }
 
-      li {
-        scroll-snap-align: start;
-      }
+      li { scroll-snap-align: start; }
     }
   }
 }

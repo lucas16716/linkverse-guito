@@ -1,3 +1,4 @@
+@use "../abstracts/tokens" as token;
 @use "../abstracts/mixins" as mix;
 @use "../abstracts/functions" as fn;
 
@@ -11,4 +12,26 @@ footer {
   position: sticky;
   bottom: 1.2rem;
   margin-bottom: 1.2rem;
+
+  opacity: token.$opacity-100;
+
+  @supports (animation-timeline: scroll()) {
+    opacity: token.$opacity-0;
+    animation: fade-in-badge linear forwards;
+    animation-timeline: scroll();
+    animation-range: 0 30vh;
+  }
+}
+
+@keyframes fade-in-badge {
+  0% {
+    opacity: token.$opacity-0;
+    transform: translateY(15px);
+    pointer-events: none;
+  }
+  100% {
+    opacity: token.$opacity-100;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
 }

@@ -3,13 +3,20 @@
 @use "../abstracts/functions" as fn;
 
 // ===================================================
-// AXIS — HEADER (Section)
+// AXIS — BECO (Section)
 // ===================================================
 
-$overlay-start-beco: token.$color-bg-primary;
-$overlay-end-beco: rgba(13, 13, 13, 0);
+// ---------------------------------------------------
+// Semantic Tokens (Surface & Overlay)
+// ---------------------------------------------------
+$bg-beco:               token.$color-bg-primary;
+$bg-image-beco:         url("/assets/media/img/beco-bg.webp");
+$overlay-start-beco:    token.$color-bg-primary;
+$overlay-end-beco:      rgba(13, 13, 13, 0);
 
-
+// ---------------------------------------------------
+// Semantic Tokens (Links)
+// ---------------------------------------------------
 $padding-link-beco:        token.$space-8 0;
 $color-link-beco:          inherit;
 $transition-link-beco:     token.$duration-200 token.$ease-standard;
@@ -17,6 +24,9 @@ $padding-link-hover-beco:  token.$space-8;
 $color-link-hover-beco:    token.$color-accent;
 $color-link-active-beco:   fn.color-dark(token.$color-accent, 25%);
 
+// ---------------------------------------------------
+// Component Definition
+// ---------------------------------------------------
 .beco { 
   position: relative;
   width: 100%;
@@ -25,20 +35,29 @@ $color-link-active-beco:   fn.color-dark(token.$color-accent, 25%);
   @include mix.flex(column, space-between, flex-start, token.$section-pad);
   padding: token.$section-pad token.$gutter token.$gutter;
 
-  background: token.$color-bg-primary url("/assets/media/img/beco-bg.webp") no-repeat center;
+  background: $bg-beco $bg-image-beco no-repeat center;
   background-size: cover;
 
+  // ---------------------------------------------------
+  // Manifest
+  // ---------------------------------------------------
   &__manifest {
     width: 100%;
     z-index: fn.z(content);
     @include mix.flex(column, center, flex-start, token.$space-ui-12);
   }
 
+  // ---------------------------------------------------
+  // Call to Action (CTA)
+  // ---------------------------------------------------
   &__cta {
     z-index: fn.z(content);
     @include mix.flex(column, flex-start, flex-start, token.$space-8);
 
-    .label { color: token.$color-accent; margin-top: token.$space-8; }
+    .label { 
+      color: token.$color-accent; 
+      margin-top: token.$space-8; 
+    }
 
     a {
       @include mix.flex(row, center, center, token.$space-8);
@@ -49,13 +68,27 @@ $color-link-active-beco:   fn.color-dark(token.$color-accent, 25%);
         color        $transition-link-beco;
 
       &:hover,
-      &:focus-visible { color: $color-link-hover-beco; padding-left: $padding-link-hover-beco; }
-      &:active        { color: $color-link-active-beco; }
+      &:focus-visible { 
+        color: $color-link-hover-beco; 
+        padding-left: $padding-link-hover-beco; 
+      }
+      
+      &:active { 
+        color: $color-link-active-beco; 
+      }
 
-      @include mix.respond(xs) { svg { width: 22px; height: 22px; } }
+      @include mix.respond(xs) { 
+        svg { 
+          width: 22px; 
+          height: 22px; 
+        } 
+      }
     }
   }
 
+  // ---------------------------------------------------
+  // Overlay Gradient
+  // ---------------------------------------------------
   &__overlay {
     position: absolute;
     z-index: fn.z(overlay);
@@ -77,5 +110,11 @@ $color-link-active-beco:   fn.color-dark(token.$color-accent, 25%);
     }
   }
 
-  &__copy { align-self: center; text-align: center; }
+  // ---------------------------------------------------
+  // Copy (Footer)
+  // ---------------------------------------------------
+  &__copy { 
+    align-self: center; 
+    text-align: center; 
+  }
 }

@@ -124,7 +124,7 @@ h1, .display-alt {
 }
 
 h1 { font-size: $font-size-display; }
-.display-alt { font-size: $font-size-display-alt; z-index: fn.z(content); }
+.display-alt { font-size: $font-size-display-alt; z-index: fn.z(content); &::before { display: none; } }
 
 // ---------------------------------------------------
 // Headings

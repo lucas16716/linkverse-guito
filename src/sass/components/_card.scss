@@ -8,41 +8,48 @@
 // ===================================================
 
 // ---------------------------------------------------
-// Semantic Card Token
+// Semantic Tokens (Surface & Radius)
 // ---------------------------------------------------
 $border-card:         1px solid token.$color-border;
 $border-rd-card:      token.$radius-xs;
 $bg-card:             token.$color-bg-primary;
 
+// ---------------------------------------------------
+// Semantic Tokens (Transitions)
+// ---------------------------------------------------
 $transition-card:     token.$duration-200 token.$ease-standard;
 $transition-card-alt: token.$duration-400 token.$ease-standard;
 
-
-
-$gap-content-card: token.$space-ui-10;
-$pad-content-card: token.$space-24 token.$space-16 token.$space-ui-28;
+// ---------------------------------------------------
+// Semantic Tokens (Content Container)
+// ---------------------------------------------------
+$gap-content-card:    token.$space-ui-10;
+$pad-content-card:    token.$space-24 token.$space-16 token.$space-ui-28;
 
 // ---------------------------------------------------
-// Card Default
+// Component Definition
 // ---------------------------------------------------
-.card { position:relative;
-  @include mix.flex($direction: column);
+.card { 
+  position: relative;
   z-index: fn.z(base);
   width: 100%;
-
+  
   border: $border-card;
   border-radius: $border-rd-card;
   background-color: $bg-card;
-
+  
   overflow: hidden;
   transition: transform $transition-card;
 
+  @include mix.flex($direction: column);
+
+  // ---------------------------------------------------
+  // Child Elements
+  // ---------------------------------------------------
   img {
     position: relative;
     z-index: fn.z(content);
-
     border-bottom: $border-card;
-    
     transition: transform $transition-card-alt;    
   }
 
@@ -52,9 +59,7 @@ $pad-content-card: token.$space-24 token.$space-16 token.$space-ui-28;
     bottom: token.$space-ui-10;
     right: token.$space-ui-10;
     transition: transform $transition-card-alt, color $transition-card-alt;
-
-      
-    }
+  }
     
   // ---------------------------------------------------
   // Interactive State
@@ -62,18 +67,12 @@ $pad-content-card: token.$space-24 token.$space-16 token.$space-ui-28;
   &.is-interactive { 
     cursor: pointer;
     
-    &:hover, &:focus-visible {
-      
+    &:hover, 
+    &:focus-visible {
       img { transform: scale(1.045); }
       
-      svg {
-      color: token.$color-accent;
-      transform: scale(1.2);
+      svg { color: token.$color-accent; transform: scale(1.2); }
     }
-    }
-    
-
-    &:active { transform: translateY(2px); }
   }
 
   // ---------------------------------------------------

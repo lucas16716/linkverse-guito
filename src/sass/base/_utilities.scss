@@ -51,7 +51,7 @@
 // ---------------------------------------------------
 // Text Interaction
 // ---------------------------------------------------
-.no-select { user-select: none; }
+.no-select { -webkit-user-select: auto; user-select: none; }
 
 // ---------------------------------------------------
 // Text Alignment
