@@ -2,15 +2,13 @@
 // AXIS — VITE CONFIGURATION
 // ===================================================
 // vite.config.js tells Vite how to serve, build,
-// and handle your project's assets and output.
+// and organize your compiled assets.
 // ===================================================
 
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  
   // Root of the project — where index.html lives
-  base: "/",
   root: ".",
 
   // Static assets served as-is (copied to dist/ on build)
@@ -31,8 +29,28 @@ export default defineConfig({
     // Clears dist/ before each build
     emptyOutDir: true,
 
-    // Sourcemaps for production debugging (set to false to disable)
+    // Sourcemaps for production debugging
     sourcemap: false,
+
+    // Output structure customization
+    rollupOptions: {
+      output: {
+        // JavaScript files
+        entryFileNames: "js/[name]-[hash].js",
+        chunkFileNames: "js/[name]-[hash].js",
+
+        // Assets
+        assetFileNames: ({ name }) => {
+          // CSS files
+          if (name && name.endsWith(".css")) {
+            return "css/[name]-[hash][extname]";
+          }
+
+          // Everything else
+          return "assets/[name]-[hash][extname]";
+        },
+      },
+    },
   },
 
   // CSS / Sass settings
